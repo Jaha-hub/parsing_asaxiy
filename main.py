@@ -36,13 +36,18 @@ def get_product(link):
         img = product.find("img", class_="img-fluid lazyload").get("data-src")
         col_vo_otzivov = product.find("div", class_="product__item-info--comments").text.strip()
         link = HOST + product.select_one('a[onclick="selectItemGtag()"]').get("href")
+        linka = HOST + link
+        description_tag = product.find("div", class_="short-desc")
+        get_description = description_tag.text.strip() if description_tag else linka
+        print(get_description)
         data.append({
             "title": title,
             "price": price,
             "old_price": old_price,
             "image": img,
             "col_vo_otzivov": col_vo_otzivov,
-            "link": link
+            "link": link,
+            "description" : get_description,
         })
     return data
 def main():
