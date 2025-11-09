@@ -37,7 +37,7 @@ def get_product(link):
         col_vo_otzivov = product.find("div", class_="product__item-info--comments").text.strip()
         link = HOST + product.select_one('a[onclick="selectItemGtag()"]').get("href")
         linka = HOST + link
-        description_tag = product.find("div", class_="short-desc")
+        description_tag = product.find("div", class_="description__item collapsed")
         get_description = description_tag.text.strip() if description_tag else linka
         print(get_description)
         data.append({
